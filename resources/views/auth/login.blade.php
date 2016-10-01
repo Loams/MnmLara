@@ -1,68 +1,101 @@
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
+    @if (Auth::guest())
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+        <p class="col-xs-12 col-sm-12 greyblue text-center alerte">
+            Vous devez etre connecté pour accéder à cette page
+        </p>
+    </div>
+    @endif
+    <!--
+    {if isset($desactive) && $desactive eq true}
+    <div class="row">
+        <p class="col-xs-12 col-sm-12 greyblue text-center alerte">
+            Votre compte a été désactiver veuillez contacter l'administrateur du site
+        </p>
+    </div>
+    {/if}
+    -->
+    <div class="row">
+        <p class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-5 col-md-4 col-md-offset-7 col-lg-3 col-lg-offset-6 greyblue text-center" id="welcome">
+            Bienvenue
+        </p>
+    </div>
+    <div class="row greyblue">
+        <div class="col-sm-2 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
+            <div class="row">
+                <h1 class="titre">MnM's Tickets</h1>
+                
+                    <img id="logo" src="/images/logo.png" alt="">
+                
+                
+            </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+        <p class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-3 col-lg-3 col-lg-offset-2 blabla text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+    </div>
+    <div class="row">
+        <form method="post" action="{{ url('/login') }}" class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-5 col-md-4 col-md-offset-7 col-lg-3 col-lg-offset-6 greyblue" id="formulaire">
+            {{ csrf_field() }}
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            	@if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            </div>
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            	@if ($errors->has('password'))
+	                <span class="help-block">
+	                    <strong>{{ $errors->first('password') }}</strong>
+	                </span>
+	            @endif
+            <input id="password" type="password" class="form-control" name="password" required>
+            </div>
+           	<div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember"> Remember Me
+                        </label>
+                    </div>
+            </div>
+          	<div class="form-group">
+		       
+		            <button type="submit" class="btn btn-default" id="submit">
+		                Go
+		            </button>
+		
+		            <a class="btn btn-link" href="{{ url('/password/reset') }}">
+		                Forgot Your Password?
+		            </a>
+		      
+		    </div>
+		</form>
+                <!--
+        <div class="row">
+            <p id="powered" class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-5 col-md-12 col-md-offset-12 col-lg-2 col-lg-offset-1">
+                Powered by TNLogs
+            </p>
+        </div>
+                -->
+        
+        <div class="row">
+            <div id="social" class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-5 col-md-4 col-md-offset-7 col-lg-3 col-lg-offset-6">
+                <ul class="row">
+                    <li class="col-xs-4 col-sm-4 text-center"><a href="https://www.facebook.com"><i class="fa fa-facebook-square"></i></a></li>
+                    <li class="col-xs-4 col-sm-4 text-center"><a href="https://www.twitter.com"><i class="fa fa-twitter-square"></i></a></li>
+                    <li class="col-xs-4 col-sm-4 text-center"><a href="mailto:mnms.tickets@gmail.com"><i class="fa fa-envelope"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
 @endsection
