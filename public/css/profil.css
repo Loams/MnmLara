@@ -1,0 +1,655 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    color: #fff;
+}
+
+
+.container-fluid{
+    background-color: #ebeaf2;
+}
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+
+/************************************************************************************
+                            Page login
+*************************************************************************************/
+
+#welcome, .titre, .blabla, input, #submit, #powered, #footer{
+    font-family: 'kozuka gothic pro', 'arial', sans-serif;
+    font-weight: lighter;
+    
+}
+
+
+#welcome {
+    padding: 30px;
+    margin-top: 120px;
+    text-align: center;
+    font-size: 48px;
+    background-color: rgba(68,79,113,0.6);
+    font-family: 'kozuka gothic pro', 'arial', sans-serif;
+    font-weight: lighter;
+}
+
+.titre {
+    font-size: 72px;
+    font-family: 'kozuka gothic pro', 'arial', sans-serif;
+    font-weight: lighter;
+}
+
+.greyblue {
+    background-color: rgba(68,79,113,0.6);
+
+    -webkit-box-shadow: 0px 0px 139px 0px rgba(124, 132, 156, 1);
+    -moz-box-shadow: 0px 0px 139px 0px rgba(124, 132, 156, 1);
+    box-shadow: 0px 0px 139px 0px rgba(124, 132, 156, 1);
+}
+
+#logo {
+    position: absolute;
+    top: -100px;
+    left: 250px;
+}
+    /************************************************************************************
+                                        formulaire *************************************************************************************/
+
+
+
+#email,
+#password,
+#submit {
+    background-color: #444f71;
+    border: none;
+    color: #fff;
+    
+}
+
+
+#email::-webkit-input-placeholder,
+#password::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #FFF;
+}
+
+#email:-moz-placeholder,
+#password:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #FFF;
+}
+
+#email::-moz-placeholder,
+#password::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #FFF;
+}
+
+#email:-ms-input-placeholder,
+#password:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #FFF;
+}
+
+#password {
+    margin-bottom: 50px;
+
+}
+
+#submit {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 180px;
+    text-align: center;
+}
+
+
+.blabla {
+    padding: 50px 50px;
+    background-color: rgba(68,79,113,0.86);
+}
+
+#formulaire {
+    padding: 100px 50px;
+}
+
+footer {
+    margin-top: 120px;
+    text-align: center;
+}
+
+footer p {
+    color: #444f71;
+}
+
+#powered {
+    text-align: center;
+    font-size: 12px;
+    height: 25px;
+    width: 150px;
+    line-height: 25px;
+    background: #444f71;
+    margin-top: 200px;
+    margin-left: -5px;
+    padding: 0px 12px;
+    -webkit-transform-origin: 15px 15px;
+    -moz-transform-origin: 15px 15px;
+    -ms-transform-origin: 15px 15px;
+    -o-transform-origin: 15px 15px;
+    transform-origin: 15px 15px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+
+
+
+/********************TABLETTE & MOBILE***************************/
+/********************TABLETTE & MOBILE***************************/
+/********************TABLETTE & MOBILE***************************/
+/********************TABLETTE & MOBILE***************************/
+
+
+
+@media screen and (max-width: 992px) {
+    
+    
+    #logo{
+        width: 130%;
+        margin-top: 300px ;
+        margin-left: -220px
+            
+    }
+    
+    
+    #powered{
+        display: none;
+    }
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+    
+    
+    #logo{
+        display: none;
+    }
+    
+    .titre{
+        display: none;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************************************************
+                            Page d'accueil
+*************************************************************************************/
+    /************************************************************************************
+                            menu top
+    *************************************************************************************/
+
+.navbar-default {
+    background-color: #241e3e;
+    padding-top: 10px;
+    height: 85px;
+    border: none;
+}
+
+
+#menu-button{
+    display: none;
+}
+
+
+/********************BARRE DE RECHERCHE***************************/
+/********************BARRE DE RECHERCHE***************************/
+/********************BARRE DE RECHERCHE***************************/
+/********************BARRE DE RECHERCHE***************************/
+
+.navbar-default .form-group{
+    padding-top: 15px;
+}
+
+.navbar-default .form-group input{
+    background-color: #c0bdcb;
+}
+
+.form-group button{
+    background-color: transparent;
+    color: #C0BDCB;
+    font-size: 18px;
+    border: none;
+}
+
+.form-group button:hover{
+    background-color: transparent;
+    color: orange;
+}
+/*****************************************************************/
+/*****************************************************************/
+/*****************************************************************/
+/*****************************************************************/
+
+
+
+.navbar-default .navbar-brand {
+    margin-top: 5px;
+    color: #fff !important;
+    font-size:2.0em;
+    font-family: Kozuka Gothic Pro;
+    font-weight: lighter;
+}
+
+
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+    background: #C0BDCB;
+    width: 240px;
+}
+
+/********************USER***************************/
+/********************USER***************************/
+/********************USER***************************/
+/********************USER***************************/
+
+#user{
+    margin-top: -65px;
+}
+
+
+#newTicket{
+    position: relative;
+    margin-right: 30px;
+    font-size: 30px;    
+}
+
+#newTicket .badge{
+    margin-left: -5x;
+}
+
+
+.navbar-default img{
+    margin-right: 30px;
+}
+
+.fa{
+    font-size: 2em;
+    margin-top: -20px;
+    padding-right: 10px;
+    position: relative;
+}
+
+
+/*****************************************************************/
+/*****************************************************************/
+/*****************************************************************/
+/*****************************************************************/
+
+
+    /************************************************************************************
+                           menu left
+    *************************************************************************************/
+
+.slide{
+    position:relative;
+    box-shadow: none;
+}
+
+.navbar-fixed-left {
+    width: 250px;
+    border: none;
+    border-radius: 0px;
+    position: fixed;
+    height: 100%;
+    margin-top: 85px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#374574+0,35426f+50,2a3458+81,2a3458+81,212a47+100 */
+background: rgb(55,69,116); /* Old browsers */
+background: -moz-linear-gradient(left,  rgba(55,69,116,1) 0%, rgba(53,66,111,1) 50%, rgba(42,52,88,1) 81%, rgba(42,52,88,1) 81%, rgba(33,42,71,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(55,69,116,1) 0%,rgba(53,66,111,1) 50%,rgba(42,52,88,1) 81%,rgba(42,52,88,1) 81%,rgba(33,42,71,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(55,69,116,1) 0%,rgba(53,66,111,1) 50%,rgba(42,52,88,1) 81%,rgba(42,52,88,1) 81%,rgba(33,42,71,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#374574', endColorstr='#212a47',GradientType=1 ); /* IE6-9 */
+}
+
+
+
+
+
+/*****************************************************************/
+/*****************************************************************/
+/*****************************************************************/
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #FFFFFF;
+    padding-left: 60px;
+}
+
+.navbar-fixed-left .navbar-nav > li{
+    float: none;  /* Cancel default li float: left */
+    width: 250px;
+    padding-left: 0px;
+    text-align: left;
+    border-bottom: solid 1px #ffffff;
+}
+
+
+.navbar-fixed-left .navbar-nav > li:last-child {
+    border: none;
+}
+
+.caret{
+    margin-left: 20%
+}
+
+.badge{
+    float: right;
+    margin-top: 0px
+}
+/*****************************************************************/
+/*****************************************************************/
+/*****************************************************************/
+
+
+
+
+
+
+
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse{
+    background-color: rgba(0, 0, 255, 0);
+}
+
+
+
+
+.navbar .dropdown, ul, .fa-cogs, a{
+    font-family: Kozuka Gothic Pro, Arial, sans-serif;
+    font-size: 15px;
+}
+
+
+.navbar-fixed-left .container {
+  padding-left: 160px;
+}
+
+/* On using dropdown menu (To right shift popuped) */
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+    background:#c0bdcb;
+    width:250px;
+    border: none;
+    border-radius: 0px;
+    padding-left: 60px
+}
+
+
+
+
+
+
+/*********************PRINCIPAL*****************************/
+/*********************PRINCIPAL*****************************/
+/*********************PRINCIPAL*****************************/
+/*********************PRINCIPAL*****************************/
+/*********************PRINCIPAL*****************************/
+
+#contain{
+    
+/*    background:#c0bdcb;*/
+    margin-top:85px;
+    margin-left: 250px;
+    font-family: Kozuka Gothic Pro, Arial sans-serif;
+}
+
+#contain h2{
+    font-size: 30px;
+    font-weight: lighter;
+    width: 500px;
+    margin-left: 15px;
+}
+
+#contain form{
+    margin-top: 80px;
+}
+
+#main{
+    background:url('../img/logoAccueil.png') no-repeat center 200px,#c0bdcb;
+    background-attachment: fixed;
+}
+
+
+
+
+
+
+/*****************FIL D'ARIANE**************************/
+/*****************FIL D'ARIANE**************************/
+
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ffffff;
+    content: ">\00a0";
+}
+
+.breadcrumb, .breadcrumb a, .breadcrumb .active {
+    background-color: #c0bdcb;
+    color: #ffffff;
+}
+/******************************************************/
+
+
+
+/****************MODIFICATION DU PROFIL****************/
+/****************MODIFICATION DU PROFIL****************/
+/****************MODIFICATION DU PROFIL****************/
+/****************MODIFICATION DU PROFIL****************/
+
+
+
+#photo{
+    padding-bottom: 20px;
+    background-color: transparent
+}
+
+#password{
+    background-color: transparent;
+}
+
+#password input{
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 4px;
+}
+
+input{
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 4px;
+    border: none;
+}
+
+#mail{
+    padding-top: 50px;
+    padding-bottom: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
