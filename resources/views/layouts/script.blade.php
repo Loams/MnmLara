@@ -38,7 +38,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.min.js"></script>
-
+	@yield('script')
     <!-- Flot -->
     <script>
       $(document).ready(function() {
@@ -204,14 +204,14 @@
 
         var cb = function(start, end, label) {
           console.log(start.toISOString(), end.toISOString(), label);
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+          $('#reportrange span').html(start.format('D MMMM , YYYY') + ' - ' + end.format('D MMMM , YYYY'));
         };
 
         var optionSet1 = {
           startDate: moment().subtract(29, 'days'),
           endDate: moment(),
           minDate: '01/01/2012',
-          maxDate: '12/31/2015',
+          maxDate: '31/12/2015',
           dateLimit: {
             days: 60
           },
@@ -232,7 +232,7 @@
           buttonClasses: ['btn btn-default'],
           applyClass: 'btn-small btn-primary',
           cancelClass: 'btn-small',
-          format: 'MM/DD/YYYY',
+          format: 'DD/MM/YYYY',
           separator: ' to ',
           locale: {
             applyLabel: 'Submit',
@@ -241,7 +241,7 @@
             toLabel: 'To',
             customRangeLabel: 'Custom',
             daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
             firstDay: 1
           }
         };

@@ -21,16 +21,13 @@
 		<br>
 		<!-- sidebar menu -->
 		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-			<div class="menu_section">
+			<div class="menu_section active">
+				<br>
 				<ul class="nav side-menu" style="">
 					<li>
 				<a href="{{ url('/ticket') }}" ><i class="fa fa-plus"></i> Créer un Ticket</button> </a>
-				<li>
-				</ul>
-			</div>
-			<div class="menu_section active">
-				<h3>General</h3>
-				<ul class="nav side-menu" style="">
+				</li>
+				
 					<li class="active">
 						<a><i class="fa fa-tachometer"></i> Dashboard </a>
 					</li>
@@ -38,22 +35,22 @@
 						<a><i class="fa fa-tag"></i> Vos Tickets <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li>
-								<a href="form.html">General Form</a>
+								<a href="form.html">Tous les tickets</a>
 							</li>
 							<li>
-								<a href="form_advanced.html">Advanced Components</a>
+								<a href="form_advanced.html">En attente PEC</a>
 							</li>
 							<li>
-								<a href="form_validation.html">Form Validation</a>
+								<a href="form_validation.html">En cours</a>
 							</li>
 							<li>
-								<a href="form_wizards.html">Form Wizard</a>
+								<a href="form_wizards.html">Attente retour</a>
 							</li>
 							<li>
-								<a href="form_upload.html">Form Upload</a>
+								<a href="form_upload.html">Clôts</a>
 							</li>
 							<li>
-								<a href="form_buttons.html">Form Buttons</a>
+								<a href="form_buttons.html">Rejeté</a>
 							</li>
 						</ul>
 					</li>
@@ -61,31 +58,22 @@
 						<a><i class="fa fa-tags"></i> Tous les tickets <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li>
-								<a href="general_elements.html">General Elements</a>
+								<a href="form.html">Tous les tickets</a>
 							</li>
 							<li>
-								<a href="media_gallery.html">Media Gallery</a>
+								<a href="form_advanced.html">En attente PEC</a>
 							</li>
 							<li>
-								<a href="typography.html">Typography</a>
+								<a href="form_validation.html">En cours</a>
 							</li>
 							<li>
-								<a href="icons.html">Icons</a>
+								<a href="form_wizards.html">Attente retour</a>
 							</li>
 							<li>
-								<a href="glyphicons.html">Glyphicons</a>
+								<a href="form_upload.html">Clôts</a>
 							</li>
 							<li>
-								<a href="widgets.html">Widgets</a>
-							</li>
-							<li>
-								<a href="invoice.html">Invoice</a>
-							</li>
-							<li>
-								<a href="inbox.html">Inbox</a>
-							</li>
-							<li>
-								<a href="calendar.html">Calendar</a>
+								<a href="form_buttons.html">Rejeté</a>
 							</li>
 						</ul>
 					</li>
@@ -94,13 +82,19 @@
 						
 					</li>
 					<li>
-						<a><i class="fa fa-cogs"></i> Administration <span class="fa fa-chevron-down"></span></a>
+						<a><i class="fa fa-cogs"></i>Administration<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li>
-								<a href="fixed_sidebar.html">Fixed Sidebar</a>
+								<a href="{{ url('/users') }}">Utilisateurs</a>
 							</li>
 							<li>
-								<a href="fixed_footer.html">Fixed Footer</a>
+								<a href="fixed_footer.html">Droits</a>
+							</li>
+							<li>
+								<a href="fixed_footer.html">Listes</a>
+							</li>
+							<li>
+								<a href="fixed_footer.html">Sauvegarde</a>
 							</li>
 						</ul>
 					</li>
