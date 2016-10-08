@@ -14,7 +14,7 @@
 Route::get('/', 'DashboardController@index');
 
 Auth::routes();
-Ticket::routes();
+
 Route::get('/home', 'HomeController@index');
 
 
