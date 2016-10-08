@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Society;
+use App\Law;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -36,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -51,6 +52,8 @@ class RegisterController extends Controller
             'firstname' => 'required|max:50',
             'lastname' => 'required|max:50',
             'email' => 'required|email|max:255|unique:users',
+            'law_id' => 'required',
+            'society_id' => 'required',
             'password' => 'required|min:6|confirmed',
             'photo' => 'required|max:200',
         ]);
@@ -68,8 +71,17 @@ class RegisterController extends Controller
         	'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
+            'law_id' => $data['law_id'],
+            'society_id' => $data['society_id'],
             'password' => bcrypt($data['password']),
             'photo' => $data['photo'],
         ]);
+    }
+	
+	public function showRegistrationForm()
+    {
+    	$societies = Society::getAll();
+		$laws = Law::getAll();
+        return view('auth.register', compact('societies', 'laws'));
     }
 }

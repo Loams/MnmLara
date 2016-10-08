@@ -66,7 +66,7 @@
 
                             <ul class="dropdown-menu slide" role="menu">
 
-                                <li class="text-center"><a href="#">Utilisateurs</a></li>
+                                <li class="text-center"><a href="https://mnm.my-project.fr/register">Utilisateurs</a></li>
 
                                 <li class="text-center"><a href="#">Droits</a></li>
 

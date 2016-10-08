@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluide" id="contain">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -79,7 +79,40 @@
                                 @endif
                             </div>
                         </div>
-                        
+                        <div class="form-group{{ $errors->has('law_id') ? ' has-error' : '' }}">
+                            <label for="law_id" class="col-md-4 control-label">Law</label>
+
+                            <div class="col-md-6">
+                                <select id="law_id" type="text" class="form-control" name="law_id" required autofocus>
+                                	<option value="none">-----------</option>
+								@foreach($laws as $law)
+									<option  value="{{ $law->id }}">{{ $law->name }}</option>
+								@endforeach
+								</select>
+                                @if ($errors->has('law_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('law_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('society_id') ? ' has-error' : '' }}">
+                            <label for="society_id" class="col-md-4 control-label">Societé</label>
+
+                            <div class="col-md-6">
+                            	<select id="society_id" type="text" class="form-control" name="society_id"  required autofocus>
+                            		<option value="none">-----------</option>
+                            	@foreach($societies as $society)
+                                <option  value="{{ $society->id }}">{{ $society->name }}</option>
+								@endforeach
+								</select>
+                                @if ($errors->has('society_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('society_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
                             <label for="photo" class="col-md-4 control-label">Photo</label>
 
