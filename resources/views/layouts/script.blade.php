@@ -45,6 +45,17 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ url('/') }}/build/js/custom.min.js"></script>
 	@yield('script')
+	<!-- menu fixed -->
+    <script>
+    	$(document).ready(function() {
+    		console.log($('.glyphicon-eye-close').parents('a'))
+    		$('.glyphicon-eye-close').parents('a').on('click',function(){
+    			$('.left_col').toggleClass('menu_fixed');
+    			$('.glyphicon-eye-close').toggleClass('active');
+    		});
+        });
+    </script>
+	<!-- /menu fixed -->
     <!-- Flot -->
     <script>
       $(document).ready(function() {
@@ -304,14 +315,4 @@
       gauge.setTextField(document.getElementById("gauge-text"));
     </script>
     <!-- /gauge.js -->
-    <!-- menu fixed -->
-    <script>
-    	$(document).ready(function() {
-    		console.log($('.glyphicon-eye-close').parents('a'))
-    		$('.glyphicon-eye-close').parents('a').on('click',function(){
-    			$('.left_col').toggleClass('menu_fixed');
-    			$('.glyphicon-eye-close').toggleClass('active');
-    		});
-        });
-    </script>
-	<!-- /menu fixed -->
+    
