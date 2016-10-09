@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	@include('layouts.head')
+	
 </head>
 <body @if (!Auth::guest())class="nav-md" @endif >
 <div class="container body">
@@ -13,9 +14,10 @@
           
 
 			@include('layouts.navbar.navbar')
-
+			<div class="right_col" role="main">
 			@yield('content')
         	@include('layouts.footer')
+        	</div>
       </div>
     </div>
 @include('layouts.script')

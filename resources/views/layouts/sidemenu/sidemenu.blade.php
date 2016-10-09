@@ -9,7 +9,7 @@
 		<!-- menu profile quick info -->
 		<div class="profile">
 			<div class="profile_pic">
-				<img src="images/img.jpg" alt="..." class="img-circle profile_img">
+				<img src="{{ url('/') }}/images/img.jpg" alt="..." class="img-circle profile_img">
 			</div>
 			<div class="profile_info">
 				<span>Welcome,</span>
@@ -88,7 +88,7 @@
 								<a href="{{ url('/users') }}">Utilisateurs</a>
 							</li>
 							<li>
-								<a href="fixed_footer.html">Droits</a>
+								<a href="{{ url('/laws') }}">Droits</a>
 							</li>
 							<li>
 								<a href="fixed_footer.html">Listes</a>
