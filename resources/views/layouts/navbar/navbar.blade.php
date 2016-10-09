@@ -20,13 +20,13 @@
 							<a href="javascript:;">Help</a>
 						</li>
 						<li>
-							<a href="{{ url('/logout') }}"
+							<a href="{{ url('/logout') }}" 
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out pull-right"></i>Logout
                                     </a>
 
-                                    <form action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    <form action="{{ url('/logout') }}" method="POST" style="display: none;" id="logout-form">
                                         {{ csrf_field() }}
                                     </form>
 						</li>
