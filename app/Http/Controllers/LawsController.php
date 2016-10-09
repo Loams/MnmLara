@@ -1,9 +1,22 @@
 <?php 
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
-class LawController extends Controller {
+use App\Http\Requests;
+use App\Repositories\LawRepository;
+use App\Http\Requests\LawRequest;
 
+use App\Law;
+
+class LawsController extends Controller {
+	
+	protected $lawRepository;
+	
+	public function __construct(LawRepository $lawRepository)
+	{
+		$this->lawRepository = $lawRepository;
+	}
   /**
    * Display a listing of the resource.
    *
@@ -11,7 +24,8 @@ class LawController extends Controller {
    */
   public function index()
   {
-    
+    $laws = Law::getAll();
+	return view('content.laws',compact('laws'));
   }
 
   /**
@@ -21,7 +35,7 @@ class LawController extends Controller {
    */
   public function create()
   {
-    
+    return view('law.create');
   }
 
   /**
@@ -29,9 +43,11 @@ class LawController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(LawRequest $request)
   {
-    
+	$inputs = array_merge($request->all());
+	$this->lawRepository->store($inputs);
+	return redirect(route('laws.index'));
   }
 
   /**
