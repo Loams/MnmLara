@@ -19,3 +19,9 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('/users', 'UsersController@index');
+/**
+Route::get('/laws', 'LawsController@index');
+Route::get('/laws/new', 'LawsController@create');
+ * 
+ */
+Route::resource('laws', 'LawsController');
