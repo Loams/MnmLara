@@ -17,6 +17,9 @@
 				<h2>Responsive example <small>Users</small></h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li>
+						<a href="{{ url('/register') }}"><i class="fa fa-plus"></i></a>
+					</li>
+					<li>
 						<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
 					<li class="dropdown">
