@@ -60,20 +60,6 @@
 							<td>{{ $law->id }}</td>
 							<td>{{ $law->name }}</td>
 							<td>{{ $law->law_level }}</td>
-							<td><div class="row">
-								<div class="col-xs-12 col-md-4">
-									<a href="#" class="btn btn-small btn-default">
-										<i class="fa fa-ban"></i>
-										Désactiver
-									</a>
-								</div>
-								<div class="col-xs-12 col-md-4">
-									<a href="#" class="btn btn-small btn-default">
-										<i class="fa fa-pencil"></i>
-										Modifier
-									</a>
-								</div>
-								<div class="col-xs-12 col-md-4"><a href="#" class="btn btn-small btn-default"><i class="fa fa-trash"></i>Supprimer</a></div></div></td>
 						</tr>
 					
 						@endforeach

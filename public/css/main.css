@@ -548,7 +548,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#374574', end
 }
 
 #main{
-    background:url('../images/logoAccueil.png') no-repeat center 200px,#c0bdcb;
+    background:url('../img/logoAccueil.png') no-repeat center 200px,#c0bdcb;
     background-attachment: fixed;
 }
 
