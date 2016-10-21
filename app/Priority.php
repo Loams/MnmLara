@@ -14,5 +14,8 @@ class Priority extends Model {
 	{
 		return $this->hasMany('App\Ticket', 'priority_id');
 	}
-
+	
+	static public function getAll(){
+		return Priority::all();
+	}
 }

@@ -2,8 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Repositories\SocietiesRepository;
+use App\Http\Requests\SocietiesRequest;
+
+use App\Society; 
+
 class SocietyController extends Controller {
 
+	protected $societiesRepository;
+	
+	public function __construct(SocietiesRepository $societiesRepository)
+	{
+		$this->middleware('auth');
+		$this->societiesRepository = $societiesRepository;
+	}
   /**
    * Display a listing of the resource.
    *
@@ -11,7 +26,8 @@ class SocietyController extends Controller {
    */
   public function index()
   {
-    
+    $societies = Society::getAll();
+	return view('content.societies',compact('societies'));
   }
 
   /**
@@ -21,7 +37,7 @@ class SocietyController extends Controller {
    */
   public function create()
   {
-    
+    return view('societies.create');
   }
 
   /**
@@ -29,9 +45,11 @@ class SocietyController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(SocietiesRequest $request)
   {
-    
+    $inputs = array_merge($request->all());
+	$this->societiesRepository->store($inputs);
+	return redirect(route('societies.index'));
   }
 
   /**
@@ -42,7 +60,8 @@ class SocietyController extends Controller {
    */
   public function show($id)
   {
-    
+    	$society = $this->societiesRepository->getById($id);
+		return view('societies.show', compact('society'));
   }
 
   /**
@@ -53,7 +72,8 @@ class SocietyController extends Controller {
    */
   public function edit($id)
   {
-    
+    	$society = $this->societiesRepository->getById($id);
+		return view('societies.edit', compact('society'));
   }
 
   /**
@@ -62,10 +82,11 @@ class SocietyController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
-  {
-    
-  }
+  public function update(SocietiesRequest $request, $id)
+	{
+		$this->societiesRepository->update($id, $request->all());
+		return redirect('socieites')->withOk('L\'utilisateur ' . $request->input('id') . ' a été modifié');
+	}
 
   /**
    * Remove the specified resource from storage.
@@ -75,7 +96,8 @@ class SocietyController extends Controller {
    */
   public function destroy($id)
   {
-    
+	$this->societiesRepository->destroy($id);
+		return redirect()->back();
   }
   
   static public function getAll(){

@@ -17,7 +17,6 @@
 			</div>
 		</div>
 		<!-- /menu profile quick info -->
-
 		<br>
 		<!-- sidebar menu -->
 		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -28,8 +27,8 @@
 				<a href="{{ url('/ticket') }}" ><i class="fa fa-plus"></i> Créer un Ticket</button> </a>
 				</li>
 				
-					<li class="active">
-						<a><i class="fa fa-tachometer"></i> Dashboard </a>
+					<li>
+						<a href="{{ url('/') }}"><i class="fa fa-tachometer"></i> Dashboard </a>
 					</li>
 					<li>
 						<a><i class="fa fa-tag"></i> Vos Tickets <span class="fa fa-chevron-down"></span></a>
@@ -38,7 +37,8 @@
 								<a href="form.html">Tous les tickets</a>
 							</li>
 							<li>
-								<a href="form_advanced.html">En attente PEC</a>
+								
+								<a href="#">En attente PEC</a>
 							</li>
 							<li>
 								<a href="form_validation.html">En cours</a>
@@ -58,23 +58,14 @@
 						<a><i class="fa fa-tags"></i> Tous les tickets <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li>
-								<a href="form.html">Tous les tickets</a>
+								{!! link_to_route('tickets.index', 'Tous les tickets') !!}
 							</li>
+							
+							@foreach($status as $statuss)
 							<li>
-								<a href="form_advanced.html">En attente PEC</a>
+								{!! link_to_route('tickets.status', $statuss->name , [$statuss->id]) !!} 
 							</li>
-							<li>
-								<a href="form_validation.html">En cours</a>
-							</li>
-							<li>
-								<a href="form_wizards.html">Attente retour</a>
-							</li>
-							<li>
-								<a href="form_upload.html">Clôts</a>
-							</li>
-							<li>
-								<a href="form_buttons.html">Rejeté</a>
-							</li>
+							@endforeach
 						</ul>
 					</li>
 					<li>
@@ -91,7 +82,16 @@
 								<a href="{{ url('/laws') }}">Droits</a>
 							</li>
 							<li>
-								<a href="fixed_footer.html">Listes</a>
+								<a href="{{ url('/societies') }}">Societies</a>
+							</li>
+							<li>
+								<a href="{{ url('/categories') }}">Categories</a>
+							</li>
+							<li>
+								<a href="{{ url('/status') }}">Status</a>
+							</li>
+							<li>
+								<a href="{{ url('/priorities') }}">Priorities</a>
 							</li>
 							<li>
 								<a href="fixed_footer.html">Sauvegarde</a>

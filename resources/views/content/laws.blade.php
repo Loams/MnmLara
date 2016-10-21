@@ -2,11 +2,11 @@
 
 @section('css')
 <!-- Datatables -->
-    <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="endors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
 				<h2>Responsive example <small>Users</small></h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li>
-						<a href="{{ url('/laws/create') }}"class="collapse-link"><i class="fa fa-plus"></i></a>
+						<a href="{{ url('/laws/create') }}"><i class="fa fa-plus"></i></a>
 					</li>
 					<li>
 						<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -40,6 +40,7 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
+				{!! link_to_route('laws.create','Ajouter un droit', [], ['class'=>'btn btn-info pull-right']) !!}
 				<p class="text-muted font-13 m-b-30">
 					Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
 				</p>
@@ -49,7 +50,8 @@
 							<th>Id</th>
 							<th>Name</th>
 							<th>Level</th>
-							
+							<th>Actif</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -57,9 +59,28 @@
 						@foreach($laws as $law)
 					
 						<tr>
-							<td>{{ $law->id }}</td>
-							<td>{{ $law->name }}</td>
-							<td>{{ $law->law_level }}</td>
+							<td>{!! link_to_route('laws.show', $law->id , [$law->id]) !!}</td>
+							<td>{!! link_to_route('laws.show', $law->name , [$law->id]) !!}</td>
+							<td>{!! link_to_route('laws.show', $law->law_level , [$law->id]) !!}</td>
+							<td width=50px class="text-center">@if($law->law_level == 1)<i class="fa fa-check"></i>@else<i class="fa fa-close"></i>@endif</td>
+							<td width=400px>
+								<div class="row">
+									<div class="col-xs-12 col-md-4 text-center">
+										<a href="#" class="btn btn-small btn-default">
+											<i class="fa fa-ban"></i>
+											Désactiver
+										</a>
+									</div>
+									<div class="col-xs-12 col-md-4 text-center">
+										{!! link_to_route('laws.edit', 'Modifier', [$law->id], ['class'=>'btn btn-small btn-default']) !!}
+									</div>
+									<div class="col-xs-12 col-md-4 text-center">
+                                        	{!! Form::open(['method'=>'DELETE', 'route'=>['laws.destroy',$law->id]]) !!}
+												{!! Form::submit('Supprimer',['class'=>'btn btn-small btn-default', 'onclick'=>'return confirm(\'Vraiment supprimer cet utilisateur?\')']) !!}
+											{!! Form::close() !!}
+									</div>
+								</div>
+							</td>
 						</tr>
 					
 						@endforeach
@@ -75,26 +96,26 @@
 
 @section('script')
 <!-- FastClick -->
-<script src="vendors/fastclick/lib/fastclick.js"></script>
+<script src="{{ url('/') }}/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="vendors/nprogress/nprogress.js"></script>
+<script src="{{ url('/') }}/vendors/nprogress/nprogress.js"></script>
 <!-- Datatables -->
 
-<script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-<script src="vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-<script src="vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
-<script src="vendors/jszip/dist/jszip.min.js"></script>
-<script src="vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="{{ url('/') }}/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+<script src="{{ url('/') }}/vendors/jszip/dist/jszip.min.js"></script>
+<script src="{{ url('/') }}/vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="{{ url('/') }}/vendors/pdfmake/build/vfs_fonts.js"></script>
 
 <!-- Datatables -->
 <script>

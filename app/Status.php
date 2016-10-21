@@ -15,4 +15,11 @@ class Status extends Model {
 		return $this->hasOne('App\Ticket', 'status_id');
 	}
 
+	static public function getAll(){
+		return Status::all();
+	}
+	
+	public function getByStatus($status){
+		return DB::table('tickets')->where('tickets.status_id')->join('status', 'status.id', '=', 'tickets.status_id')->get;
+	}
 }

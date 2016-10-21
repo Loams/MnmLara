@@ -2,8 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Repositories\CategoriesRepository;
+use App\Http\Requests\CategoriesRequest;
+
+use App\Categories;
+
 class CategoriesController extends Controller {
 
+	protected $categoriesRepository;
+	
+	public function __construct(CategoriesRepository $categoriesRepository)
+	{
+		$this->middleware('auth');
+		$this->categoriesRepository = $categoriesRepository;
+	}
   /**
    * Display a listing of the resource.
    *
@@ -11,7 +26,8 @@ class CategoriesController extends Controller {
    */
   public function index()
   {
-    
+    $categories = Categories::getAll();
+	return view('content.categories',compact('categories'));
   }
 
   /**
@@ -21,7 +37,7 @@ class CategoriesController extends Controller {
    */
   public function create()
   {
-    
+    return view('categories.create');
   }
 
   /**
@@ -29,9 +45,11 @@ class CategoriesController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(CategoriesRequest $request)
   {
-    
+	$inputs = array_merge($request->all());
+	$this->categoriesRepository->store($inputs);
+	return redirect(route('categories.index'));
   }
 
   /**
@@ -42,7 +60,8 @@ class CategoriesController extends Controller {
    */
   public function show($id)
   {
-    
+    	$category = $this->categoriesRepository->getById($id);
+		return view('categories.show', compact('category'));
   }
 
   /**
@@ -53,7 +72,8 @@ class CategoriesController extends Controller {
    */
   public function edit($id)
   {
-    
+    	$category = $this->categoriesRepository->getById($id);
+		return view('categories.edit', compact('category'));
   }
 
   /**
@@ -62,10 +82,11 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
-  {
-    
-  }
+  public function update(CategoriesRequest $request, $id)
+	{
+		$this->categoriesRepository->update($id, $request->all());
+		return redirect('categories')->withOk('L\'utilisateur ' . $request->input('id') . ' a été modifié');
+	}
 
   /**
    * Remove the specified resource from storage.
@@ -75,7 +96,8 @@ class CategoriesController extends Controller {
    */
   public function destroy($id)
   {
-    
+	$this->categoriesRepository->destroy($id);
+		return redirect()->back();
   }
   
 }

@@ -14,5 +14,8 @@ class Categories extends Model {
 	{
 		return $this->hasMany('App\Ticket', 'category_id');
 	}
-
+	
+	static public function getAll(){
+		return Categories::all();
+	}
 }

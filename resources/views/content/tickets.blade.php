@@ -17,7 +17,7 @@
 				<h2>Responsive example <small>Users</small></h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li>
-						<a href="{{ url('/register') }}"><i class="fa fa-plus"></i></a>
+						<a href="{{ url('/tickets/create') }}"><i class="fa fa-plus"></i></a>
 					</li>
 					<li>
 						<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -47,31 +47,36 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>First name</th>
-							<th>Last name</th>
-							<th>Email</th>
-							<th>Droit</th>
-							<th>Societe</th>
+							<th>Title</th>
+							<th>Date Resolution</th>
+							<th>Create By</th>
+							<th>Treat By</th>
+							<th>Category</th>
+							<th>Priority</th>
+							<th>Status</th>
+							<th>Solved</th>
 							<th>Créé le</th>
 							<th>Modifier le</th>
-							<th>Actif</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						
-						@foreach($users as $user)
+						@foreach($tickets as $ticket)
 					
 						<tr>
-							<td>{{ $user->id }}</td>
-							<td>{{ $user->firstname }}</td>
-							<td>{{ $user->lastname }}</td>
-							<td>{{ $user->email }}</td>
-							<td>{{ $user->law->name }}</td>
-							<td>{{ $user->society->name }}</td>
-							<td>{{ $user->created_at->format('d M Y à H:m:s') }}</td>
-							<td>{{ $user->updated_at->format('d M Y à H:m:s') }}</td>
-							<td>{{ $user->law_id }}</td>
+							<td>{{ $ticket->id }}</td>
+							<td>{{ $ticket->title }}</td>
+							<td>{{ $ticket->date_resolution }}</td>
+							<td>{{ $ticket->createBy->firstname }} {{ $ticket->createBy->lastname }}</td>
+							<td>{{ $ticket->treatBy->firstname }} {{ $ticket->treatBy->lastname }}</td>
+							<td>{{ $ticket->category->name }}</td>
+							<td>{{ $ticket->priority->name }}</td>
+							<td>{{ $ticket->status->name }}</td>
+							<td>{{ $ticket->solved }}</td>
+							<td>{{ $ticket->created_at->format('d M Y à H:m:s') }}</td>
+							<td>{{ $ticket->updated_at->format('d M Y à H:m:s') }}</td>
+							
 							<td width=400px>
 								<div class="row">
 									<div class="col-xs-12 col-md-4 text-center">
@@ -81,10 +86,10 @@
 										</a>
 									</div>
 									<div class="col-xs-12 col-md-4 text-center">
-										{!! link_to_route('users.edit', 'Modifier', [$user->id], ['class'=>'btn btn-small btn-default']) !!}
+										{!! link_to_route('tickets.edit', 'Modifier', [$ticket->id], ['class'=>'btn btn-small btn-default']) !!}
 									</div>
 									<div class="col-xs-12 col-md-4 text-center">
-                                        	{!! Form::open(['method'=>'DELETE', 'route'=>['users.destroy',$user->id]]) !!}
+                                        	{!! Form::open(['method'=>'DELETE', 'route'=>['tickets.destroy',$ticket->id]]) !!}
 												{!! Form::submit('Supprimer',['class'=>'btn btn-small btn-default', 'onclick'=>'return confirm(\'Vraiment supprimer cet utilisateur?\')']) !!}
 											{!! Form::close() !!}
 									</div>

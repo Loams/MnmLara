@@ -16,8 +16,9 @@
 			@include('layouts.navbar.navbar')
 			<div class="right_col" role="main">
 			@yield('content')
+			</div>
         	@include('layouts.footer')
-        	</div>
+        	
       </div>
     </div>
 @include('layouts.script')

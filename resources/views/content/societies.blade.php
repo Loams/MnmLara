@@ -17,7 +17,7 @@
 				<h2>Responsive example <small>Users</small></h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li>
-						<a href="{{ url('/register') }}"><i class="fa fa-plus"></i></a>
+						<a href="{{ url('/societies/create') }}"><i class="fa fa-plus"></i></a>
 					</li>
 					<li>
 						<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -40,6 +40,7 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
+				<p class="help-block bg-danger">{{ session('status') }}</p>
 				<p class="text-muted font-13 m-b-30">
 					Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
 				</p>
@@ -47,31 +48,28 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>First name</th>
-							<th>Last name</th>
-							<th>Email</th>
-							<th>Droit</th>
-							<th>Societe</th>
-							<th>Créé le</th>
-							<th>Modifier le</th>
+							<th>Name</th>
+							<th>Siret</th>
+							<th>Address</th>
+							<th>CP</th>
+							<th>City</th>
 							<th>Actif</th>
 							<th>Action</th>
+							
 						</tr>
 					</thead>
 					<tbody>
 						
-						@foreach($users as $user)
+						@foreach($societies as $society)
 					
 						<tr>
-							<td>{{ $user->id }}</td>
-							<td>{{ $user->firstname }}</td>
-							<td>{{ $user->lastname }}</td>
-							<td>{{ $user->email }}</td>
-							<td>{{ $user->law->name }}</td>
-							<td>{{ $user->society->name }}</td>
-							<td>{{ $user->created_at->format('d M Y à H:m:s') }}</td>
-							<td>{{ $user->updated_at->format('d M Y à H:m:s') }}</td>
-							<td>{{ $user->law_id }}</td>
+							<td>{{ $society->id }}</td>
+							<td>{{ $society->name }}</td>
+							<td>{{ $society->siret }}</td>
+							<td>{{ $society->address }}</td>
+							<td>{{ $society->cp }}</td>
+							<td>{{ $society->city }}</td>
+							<td width=50px class="text-center">@if($society->id == 1)<i class="fa fa-check"></i>@else<i class="fa fa-close"></i>@endif</td>
 							<td width=400px>
 								<div class="row">
 									<div class="col-xs-12 col-md-4 text-center">
@@ -81,12 +79,13 @@
 										</a>
 									</div>
 									<div class="col-xs-12 col-md-4 text-center">
-										{!! link_to_route('users.edit', 'Modifier', [$user->id], ['class'=>'btn btn-small btn-default']) !!}
+										{!! link_to_route('societies.edit', 'Modifier', [$society->id], ['class'=>'btn btn-small btn-default']) !!}
 									</div>
 									<div class="col-xs-12 col-md-4 text-center">
-                                        	{!! Form::open(['method'=>'DELETE', 'route'=>['users.destroy',$user->id]]) !!}
-												{!! Form::submit('Supprimer',['class'=>'btn btn-small btn-default', 'onclick'=>'return confirm(\'Vraiment supprimer cet utilisateur?\')']) !!}
-											{!! Form::close() !!}
+										{!! Form::open(['method'=>'DELETE', 'route'=>['societies.destroy',$society->id]]) !!}
+												{!! Form::submit('Supprimer',['class'=>'btn btn-small btn-default', 'onclick'=>'return confirm(\'Vraiment supprimer cette societé?\')']) !!}
+										{!! Form::close() !!}
+										
 									</div>
 								</div>
 							</td>

@@ -17,7 +17,7 @@
 				<h2>Responsive example <small>Users</small></h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li>
-						<a href="{{ url('/register') }}"><i class="fa fa-plus"></i></a>
+						<a href="{{ url('/priorities/create') }}"><i class="fa fa-plus"></i></a>
 					</li>
 					<li>
 						<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -40,6 +40,7 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
+				{!! link_to_route('priorities.create','Ajouter une priorité', [], ['class'=>'btn btn-info pull-right']) !!}
 				<p class="text-muted font-13 m-b-30">
 					Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
 				</p>
@@ -47,31 +48,21 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>First name</th>
-							<th>Last name</th>
-							<th>Email</th>
-							<th>Droit</th>
-							<th>Societe</th>
-							<th>Créé le</th>
-							<th>Modifier le</th>
+							<th>Name</th>
+							<th>Level</th>
 							<th>Actif</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						
-						@foreach($users as $user)
+						@foreach($priorities as $priority)
 					
 						<tr>
-							<td>{{ $user->id }}</td>
-							<td>{{ $user->firstname }}</td>
-							<td>{{ $user->lastname }}</td>
-							<td>{{ $user->email }}</td>
-							<td>{{ $user->law->name }}</td>
-							<td>{{ $user->society->name }}</td>
-							<td>{{ $user->created_at->format('d M Y à H:m:s') }}</td>
-							<td>{{ $user->updated_at->format('d M Y à H:m:s') }}</td>
-							<td>{{ $user->law_id }}</td>
+							<td>{!! link_to_route('priorities.show', $priority->id , [$priority->id]) !!}</td>
+							<td>{!! link_to_route('priorities.show', $priority->name , [$priority->id]) !!}</td>
+							<td>{!! link_to_route('priorities.show', $priority->priority_level , [$priority->id]) !!}</td>
+							<td width=50px class="text-center">@if($priority->priority_level == 1)<i class="fa fa-check"></i>@else<i class="fa fa-close"></i>@endif</td>
 							<td width=400px>
 								<div class="row">
 									<div class="col-xs-12 col-md-4 text-center">
@@ -81,10 +72,10 @@
 										</a>
 									</div>
 									<div class="col-xs-12 col-md-4 text-center">
-										{!! link_to_route('users.edit', 'Modifier', [$user->id], ['class'=>'btn btn-small btn-default']) !!}
+										{!! link_to_route('priorities.edit', 'Modifier', [$priority->id], ['class'=>'btn btn-small btn-default']) !!}
 									</div>
 									<div class="col-xs-12 col-md-4 text-center">
-                                        	{!! Form::open(['method'=>'DELETE', 'route'=>['users.destroy',$user->id]]) !!}
+                                        	{!! Form::open(['method'=>'DELETE', 'route'=>['priorities.destroy',$priority->id]]) !!}
 												{!! Form::submit('Supprimer',['class'=>'btn btn-small btn-default', 'onclick'=>'return confirm(\'Vraiment supprimer cet utilisateur?\')']) !!}
 											{!! Form::close() !!}
 									</div>
