@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Repositories\TicketsRepository;
 use App\Http\Requests\TicketsRequest;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class TicketController extends Controller
@@ -133,6 +133,7 @@ class TicketController extends Controller
 	 */
 	public function showYourTicketsByStatus($status, $id)
 	{
+		
 		$tickets = $this->ticketsRepository->getYourTicketByCreat($id, $status);
 		
 		return view('content.tickets', compact('tickets'));

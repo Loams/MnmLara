@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Ticket;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TicketsRepository
 {
@@ -57,16 +59,42 @@ class TicketsRepository
 	}
 	
 	public function getAllByCreat($id){
+		
 		return Ticket::where('create_by', $id)->get();
 	}
 	
 	public function getByStatus($id){
-		return Ticket::where('tickets.status_id', $id)->join('status', 'status.id', '=', 'tickets.status_id')->get();
+
+		return Ticket::select('tickets.id as id' , 'title', 'date_resolution', 'create_by', 'treat_by', 'category_id', 'priority_id', 'status_id', 'open', 'solved', 'tickets.created_at', 'tickets.updated_at')
+			->where('tickets.status_id', $id)
+			->join('status', 'status.id', '=', 'tickets.status_id')
+			->get();
 	}
 
 	public function getYourTicketByCreat($id, $status){
-		return Ticket::select('tickets.id as id' , 'title', 'date_resolution', 'create_by', 'treat_by', 'category_id', 'priority_id', 'status_id', 'open', 'solved', 'tickets.created_at', 'tickets.updated_at')->where('tickets.status_id', $status)->join('status', 'status.id', '=', 'tickets.status_id')
-			->where('tickets.create_by','=', $id)->join('users', 'users.id', '=', 'tickets.create_by')->get();
+
+
+
+		$tickets = Ticket::select('tickets.id as id' , 'title', 'date_resolution', 'create_by', 'treat_by', 'category_id', 'priority_id', 'status_id', 'open', 'solved', 'tickets.created_at', 'tickets.updated_at')->where('tickets.status_id', $status)
+							->join('status', 'status.id', '=', 'tickets.status_id');
+		if(Auth::user()->law->name === 'Superuser' || Auth::user()->law->name === 'Modérateur' )
+		{
+			$tickets = $tickets->where('tickets.treat_by','=', $id);
+		}
+		else
+		{
+			$tickets = $tickets->where('tickets.create_by','=', $id);
+		}
+			$tickets = $tickets->join('users', 'users.id', '=', 'tickets.create_by')
+				->get();
+
+		return $tickets;
+		/*Ticket::select('tickets.id as id' , 'title', 'date_resolution', 'create_by', 'treat_by', 'category_id', 'priority_id', 'status_id', 'open', 'solved', 'tickets.created_at', 'tickets.updated_at')->where('tickets.status_id', $status)
+			->join('status', 'status.id', '=', 'tickets.status_id')
+			->where('tickets.create_by','=', $id)
+			->join('users', 'users.id', '=', 'tickets.create_by')
+			->get();
+		*/
 	}
 	
 	

@@ -63,7 +63,7 @@
 					<tbody>
 						
 						@foreach($tickets as $ticket)
-					
+
 						<tr @if( $ticket->open  == 1) class="viewed" @else class="not-viewed" @endif>
 							<td>{{ $ticket->id }}</td>
 							<td>{{ $ticket->title }}</td>

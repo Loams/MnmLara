@@ -5,6 +5,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Ticket extends Model {
 
@@ -48,7 +49,15 @@ class Ticket extends Model {
 	
 	static public function getNbYourTicket($id)
 	{
-		return DB::table('tickets')->where('open', '=', 0)->where('create_by', '=', $id)->count();
+		if(Auth::user()->law->name === 'Superuser' || Auth::user()->law->name === 'Modérateur' )
+		{
+			return DB::table('tickets')->where('open', '=', 0)->where('treat_by', '=', $id)->count();
+		}
+		else
+		{
+			return DB::table('tickets')->where('open', '=', 0)->where('create_by', '=', $id)->count();
+		}
+
 	}
 	static public function getNbTicket($id = null)
 	{

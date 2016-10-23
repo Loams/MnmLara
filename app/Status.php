@@ -2,7 +2,7 @@
 
 namespace App;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model {
@@ -33,6 +33,14 @@ class Status extends Model {
 	public function getNbTicketByUser($user_id)
 	{
 		$status_id = $this->id;
-		return DB::table('tickets')->where('status_id', '=', $status_id)->where('open', '=', 0)->where('create_by', '=', $user_id)->count();
+		if(Auth::user()->law->name === 'Superuser' || Auth::user()->law->name === 'Modérateur' )
+		{
+			return DB::table('tickets')->where('status_id', '=', $status_id)->where('open', '=', 0)->where('treat_by', '=', $user_id)->count();
+		}
+		else
+		{
+			return DB::table('tickets')->where('status_id', '=', $status_id)->where('open', '=', 0)->where('create_by', '=', $user_id)->count();
+		}
+
 	}
 }
