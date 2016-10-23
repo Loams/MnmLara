@@ -14,14 +14,17 @@ class UsersRepository
 		$this->users = $users;
 	}
 
-	private function save(User $users, Array $inputs)
+	private function save(User $users, Array $data)
 	{
 		$users->firstname = $data['firstname'];
         $users->lastname = $data['lastname'];
         $users->email = $data['email'];
         $users->law_id = $data['law_id'];
         $users->society_id = $data['society_id'];
-        $users->password = bcrypt($data['password']);
+		if(isset($data['password']))
+		{
+			$users->password = bcrypt($data['password']) ;
+		}
         $users->photo = $data['photo'];
 		$users->save();
 	}

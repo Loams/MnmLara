@@ -43,7 +43,7 @@
 				<p class="text-muted font-13 m-b-30">
 					Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
 				</p>
-				<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+				<table id="datatable-responsive" class="table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -64,7 +64,7 @@
 						
 						@foreach($tickets as $ticket)
 					
-						<tr>
+						<tr @if( $ticket->open  == 1) class="viewed" @else class="not-viewed" @endif>
 							<td>{{ $ticket->id }}</td>
 							<td>{{ $ticket->title }}</td>
 							<td>{{ $ticket->date_resolution }}</td>
@@ -80,10 +80,7 @@
 							<td width=400px>
 								<div class="row">
 									<div class="col-xs-12 col-md-4 text-center">
-										<a href="#" class="btn btn-small btn-default">
-											<i class="fa fa-ban"></i>
-											Désactiver
-										</a>
+										{!! link_to_route('tickets.show', 'Voir', [$ticket->id], ['class'=>'btn btn-small btn-default']) !!}
 									</div>
 									<div class="col-xs-12 col-md-4 text-center">
 										{!! link_to_route('tickets.edit', 'Modifier', [$ticket->id], ['class'=>'btn btn-small btn-default']) !!}

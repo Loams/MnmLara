@@ -105,10 +105,10 @@ class TicketController extends Controller
 		$this->ticketsRepository->destroy($id);
 		return redirect()->back();
 	}
-	
-	public function showAllYourTicket()
+
+	public function showAllYourTicket($id)
 	{
-		$tickets = $this->ticketsRepository->getAllByCreat(Auth::user()->id);
+		$tickets = $this->ticketsRepository->getAllByCreat($id);
 		return view('content.tickets', compact('tickets'));
 	}
 	
@@ -128,11 +128,13 @@ class TicketController extends Controller
 	 * Display a listing of the resource sort by status
 	 *
 	 * @param  int  $status
+	 * @param  int  $id
 	 * @return Response
 	 */
-	public function showYourTicketsByStatus($status)
+	public function showYourTicketsByStatus($status, $id)
 	{
-		$tickets = $this->ticketsRepository->getByStatus($status);
+		$tickets = $this->ticketsRepository->getYourTicketByCreat($id, $status);
+		
 		return view('content.tickets', compact('tickets'));
 	}
 

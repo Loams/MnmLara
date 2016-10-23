@@ -13,7 +13,7 @@
 			</div>
 			<div class="profile_info">
 				<span>Welcome,</span>
-				<h2>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h2>
+				<h2>{{ $user->firstname }} {{ $user->lastname }}</h2>
 			</div>
 		</div>
 		<!-- /menu profile quick info -->
@@ -34,44 +34,39 @@
 						<a><i class="fa fa-tag"></i> Vos Tickets <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li>
-								<a href="form.html">Tous les tickets</a>
+								<a href="{{route('tickets.allyour', ['id' => $user->id])}}">Tous les tickets<span class="badge ">{{ $tickets_all_your }}</span></a>
 							</li>
-							<li>
-								
-								<a href="#">En attente PEC</a>
-							</li>
-							<li>
-								<a href="form_validation.html">En cours</a>
-							</li>
-							<li>
-								<a href="form_wizards.html">Attente retour</a>
-							</li>
-							<li>
-								<a href="form_upload.html">Clôts</a>
-							</li>
-							<li>
-								<a href="form_buttons.html">Rejeté</a>
-							</li>
+
+							@foreach($status as $statuss)
+								<li>
+									<a href="{{route('tickets.createby', ['status' => $statuss->id, 'id' => $user->id])}}">{{ $statuss->name }}<span class="badge ">{{ $statuss->getNbTicketByUser( $user->id ) }}</span></a>
+								</li>
+
+							@endforeach
 						</ul>
 					</li>
+					@if( $user->law->name != 'User' )
 					<li>
 						<a><i class="fa fa-tags"></i> Tous les tickets <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li>
-								{!! link_to_route('tickets.index', 'Tous les tickets') !!}
+								<a href="{{route('tickets.index')}}">Tous les tickets<span class="badge ">{{ $tickets_all }}</span></a>
 							</li>
 							
 							@foreach($status as $statuss)
 							<li>
-								{!! link_to_route('tickets.status', $statuss->name , [$statuss->id]) !!} 
+								<a href="{{route('tickets.status', [$statuss->id])}}">{{ $statuss->name }}<span class="badge ">{{ $statuss->getNbTicket() }}</span></a>
 							</li>
+
 							@endforeach
 						</ul>
 					</li>
+					@endif
 					<li>
 						<a><i class="fa fa-calendar"></i> Calendrier</a>
 						
 					</li>
+					@if( $user->law->name   == 'Admin')
 					<li>
 						<a><i class="fa fa-cogs"></i>Administration<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
@@ -98,6 +93,7 @@
 							</li>
 						</ul>
 					</li>
+					@endif
 				</ul>
 			</div>
 		</div>

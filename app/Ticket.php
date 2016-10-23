@@ -2,7 +2,9 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Ticket extends Model {
 
@@ -44,12 +46,13 @@ class Ticket extends Model {
 		return Ticket::all();
 	}
 	
-	public function getByStatus($id){
-		return Ticket::where('tickets.status_id', $id)->join('status', 'status.id', '=', 'tickets.status_id')->get();
+	static public function getNbYourTicket($id)
+	{
+		return DB::table('tickets')->where('open', '=', 0)->where('create_by', '=', $id)->count();
 	}
-	
-	static public function getYourTicketByCreat($id, $status){
-		return Ticket::where('tickets.status_id', $id)->join('status', 'status.id', '=', 'tickets.status_id')
-		->where('tickets.create_by')->join('users', 'users.id', '=', 'tickets.create_by')->get();
+	static public function getNbTicket($id = null)
+	{
+		return DB::table('tickets')->where('open', '=', 0)->count();
 	}
+
 }

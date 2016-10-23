@@ -20,6 +20,6 @@
 <link href="{{ url('/') }}/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet">
 
 <!-- Custom Theme Style -->
-<link href="{{ url('/') }}/build/css/custom.min.css" rel="stylesheet">
+<link href="{{ url('/') }}/build/css/custom.css" rel="stylesheet">
 
 @yield('css')

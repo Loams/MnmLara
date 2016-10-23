@@ -32,7 +32,7 @@ require('laravel-elixir-vue');
 
 
 gulp.task('sass', function(){
-    gulp.src(dirs.src + '/sass/*.scss')
+   return gulp.src(dirs.src + '/sass/*.scss')
         .pipe(plugins.sass())
         .pipe(plugins.csscomb())
         .pipe(plugins.cssbeautify({indent: '  '}))
@@ -40,6 +40,25 @@ gulp.task('sass', function(){
             browsers: ['last 2 versions', 'ie >= 8', '> 1%'],
             cascade: false
         }))
-        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest(dirs.dist + '/css'));
+});
+
+gulp.task('minify', function(){
+   return gulp.src([dirs.dist + '/css/*.css', '!' + dirs.dist + '/css/*.min.css'])
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(plugins.rename({suffix : '.min'}))
+        .pipe(gulp.dest(dirs.dist + '/css'));
+});
+
+gulp.task('dev', function(done){
+    runSequence(
+        ['sass'],
+        done);
+});
+
+gulp.task('prod', function(done){
+    runSequence(
+        'sass',
+        'minify',
+        done);
 });

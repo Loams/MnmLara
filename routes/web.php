@@ -32,3 +32,6 @@ Route::resource('status', 'StatusController');
 Route::resource('users', 'UsersController');
 Route::resource('tickets', 'TicketController');
 Route::get('/tickets/status/{status}', ['uses' => 'TicketController@showTicketsByStatus', 'as' => 'tickets.status'])->where('status', '[0-9]+');
+
+Route::get('/tickets/status/{status}/user/{id}', ['uses' => 'TicketController@showYourTicketsByStatus', 'as' => 'tickets.createby'])->where('status', '[0-9]+')->where('id', '[0-9]+');
+Route::get('/tickets/user/{id}/all', ['uses' => 'TicketController@showAllYourTicket', 'as' => 'tickets.allyour'])->where('id', '[0-9]+');

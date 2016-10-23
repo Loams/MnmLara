@@ -37,7 +37,7 @@ class PriorityController extends Controller
 	 */
 	public function create()
 	{
-		return view('priority.create');
+		return view('priorities.create');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class PriorityController extends Controller
 	{
 		$inputs = array_merge($request->all());
 		$this->priorityRepository->store($inputs);
-		return redirect(route('priority.index'));
+		return redirect(route('priorities.index'));
 	}
 
 	/**
@@ -61,7 +61,7 @@ class PriorityController extends Controller
 	public function show($id)
 	{
 		$priority = $this->priorityRepository->getById($id);
-		return view('priority.show', compact('priority'));
+		return view('priorities.show', compact('priority'));
 	}
 
 	/**
@@ -73,7 +73,7 @@ class PriorityController extends Controller
 	public function edit($id)
 	{
 		$priority = $this->priorityRepository->getById($id);
-		return view('priority.edit', compact('priority')); 
+		return view('priorities.edit', compact('priority'));
 	}
 
 	/**

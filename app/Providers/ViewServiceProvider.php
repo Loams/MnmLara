@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use App\Status;
+use App\Ticket;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -12,13 +15,21 @@ class ViewServiceProvider extends ServiceProvider
      * Bootstrap the application services.
      * @return void
      */
-    public function boot()
+    public function boot(Guard $auth)
     {
-        view()->composer('*', function ($view)
+        view()->composer('layouts.sidemenu.sidemenu', function ($view) use ($auth)
         {
-            $status = Status::all();
+            $status = Status::getAll();
+            $tickets_all = Ticket::getNbTicket();
+            $user = $auth->user();
+            $ticket_all_your = Ticket::getNbYourTicket($user->id);
 
-            $view->with('status', $status);
+            $view->with([
+                'status' => $status,
+                'tickets_all_your' => $ticket_all_your,
+                'tickets_all' => $tickets_all,
+                'user' => $user
+            ]);
         });
     }
 
