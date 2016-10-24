@@ -1,6 +1,6 @@
 # Laravel PHP Framework
 
-[![version](https://img.shields.io/badge/Version-0.0.1-brightgreen.svg)
+![version](https://img.shields.io/badge/Version-0.0.1-brightgreen.svg)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
