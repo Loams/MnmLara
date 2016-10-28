@@ -66,7 +66,7 @@
 						<a><i class="fa fa-calendar"></i> Calendrier</a>
 						
 					</li>
-					@if( $user->law->name   == 'Admin')
+					@permission(('admin-menu'))
 					<li>
 						<a><i class="fa fa-cogs"></i>Administration<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
@@ -87,13 +87,16 @@
 							</li>
 							<li>
 								<a href="{{ url('/priorities') }}">Priorities</a>
+
+							<li>
+								<a href="{{ url('/permissions') }}">Permissions</a>
 							</li>
 							<li>
 								<a href="fixed_footer.html">Sauvegarde</a>
 							</li>
 						</ul>
 					</li>
-					@endif
+					@endpermission
 				</ul>
 			</div>
 		</div>

@@ -67,7 +67,15 @@
 							<td>{{ $user->firstname }}</td>
 							<td>{{ $user->lastname }}</td>
 							<td>{{ $user->email }}</td>
-							<td>{{ $user->law->name }}</td>
+							<td>
+								@foreach ($user->roles as $role)
+									{{ $role->name }}
+									@if ($loop->last)
+									@else
+										,
+									@endif
+								@endforeach
+							</td>
 							<td>{{ $user->society->name }}</td>
 							<td>{{ $user->created_at->format('d M Y à H:m:s') }}</td>
 							<td>{{ $user->updated_at->format('d M Y à H:m:s') }}</td>

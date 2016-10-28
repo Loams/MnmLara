@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+	use EntrustUserTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -45,6 +46,10 @@ class User extends Authenticatable
 	public function treatTicket()
 	{
 		return $this->hasMany('App\Ticket', 'treat_by');
+	}
+
+	public function roles(){
+		return $this->belongsToMany('App\Role');
 	}
 	
 	static public function getAll(){

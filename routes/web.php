@@ -30,6 +30,7 @@ Route::resource('societies', 'SocietyController');
 Route::resource('priorities', 'PriorityController');
 Route::resource('status', 'StatusController');
 Route::resource('users', 'UsersController');
+Route::resource('permissions', 'PermissionController');
 Route::resource('tickets', 'TicketController');
 Route::get('/tickets/status/{status}', ['uses' => 'TicketController@showTicketsByStatus', 'as' => 'tickets.status'])->where('status', '[0-9]+');
 
