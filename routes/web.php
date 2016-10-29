@@ -32,6 +32,8 @@ Route::resource('status', 'StatusController');
 Route::resource('users', 'UsersController');
 Route::resource('permissions', 'PermissionController');
 Route::resource('tickets', 'TicketController');
+Route::resource('gestionpermission', 'GestionPermissionController', ['except' => ['update']]);
+Route::put('/gestionpermission', ['uses' => 'GestionPermissionController@update', 'as' => 'gestionpermission.update']);
 Route::get('/tickets/status/{status}', ['uses' => 'TicketController@showTicketsByStatus', 'as' => 'tickets.status'])->where('status', '[0-9]+');
 
 Route::get('/tickets/status/{status}/user/{id}', ['uses' => 'TicketController@showYourTicketsByStatus', 'as' => 'tickets.createby'])->where('status', '[0-9]+')->where('id', '[0-9]+');
