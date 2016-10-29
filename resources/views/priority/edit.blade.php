@@ -23,6 +23,10 @@
 						{!! Form::text('priority_level', null, ['class'=>'form-control', 'placeholder'=>'Niveau']) !!}
 						{!! $errors->first('priority_level', '<small class="help-block">:message</small>') !!}
 					</div>
+					<div class="form-group {!! $errors->has('class') ? 'has-error' : '' !!}">
+						{!! Form::text('class', null, ['class'=>'form-control', 'placeholder'=>'Class']) !!}
+						{!! $errors->first('class', '<small class="help-block">:message</small>') !!}
+					</div>
 					{!! Form::submit('Envoyer', ['class'=>'btn btn-primary pull-right']) !!}
 					{!! Form::close() !!}
 				</div>

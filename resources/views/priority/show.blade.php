@@ -21,6 +21,9 @@
 				<div class="col-md-11 col-md-offset-1">
 					Niveau : {{ $priority->priority_level }}
 				</div>
+				<div class="col-md-11 col-md-offset-1">
+					class : {{ $priority->class }}
+				</div>
 			</div>
 			<div class="ln_solid"></div>
 			<div class="pull-right">
