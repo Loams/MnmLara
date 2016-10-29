@@ -17,7 +17,8 @@ class PriorityRepository
 	private function save(Priority $priority, Array $inputs)
 	{
 		$priority->name = $inputs['name'];
-		$priority->priority_level = $inputs['priority_level'];	
+		$priority->priority_level = $inputs['priority_level'];
+		$priority->class = $inputs['class'];
 		$priority->save();
 	}
 

@@ -71,7 +71,7 @@
 							<td>{{ $ticket->createBy->firstname }} {{ $ticket->createBy->lastname }}</td>
 							<td>{{ $ticket->treatBy->firstname }} {{ $ticket->treatBy->lastname }}</td>
 							<td>{{ $ticket->category->name }}</td>
-							<td>{{ $ticket->priority->name }}</td>
+							<td><span class="label {{ $ticket->priority->class }}">{{ $ticket->priority->name }}</span></td>
 							<td>{{ $ticket->status->name }}</td>
 							<td>{{ $ticket->solved }}</td>
 							<td>{{ $ticket->created_at->format('d M Y à H:m:s') }}</td>
@@ -101,8 +101,8 @@
 			</div>
 		</div>
 	</div>
-</div>
-</div>
+
+
 @endsection
 
 @section('script')

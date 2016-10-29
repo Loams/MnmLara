@@ -26,6 +26,7 @@ class PriorityRequest extends FormRequest
         return [
             'name' => 'required',
             'priority_level' => 'required',
+            'class' => 'required|max:255',
         ];
     }
 }
