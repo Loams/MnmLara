@@ -46,7 +46,21 @@ class GestionPermissionController extends Controller
 	{
 		foreach($request->input() as $key => $value )
 		{
-			echo "key : " . $key . "value : " . $value ."<br>";
+			$firstKey = substr($key, 0, 1);
+			//echo "premiere lettre : " . $firstKey . " key : " . $key . " value : " . $value ."<br>";
+			if($firstKey != '_'){
+				$attributes = explode('_', $key);
+				$test = array($attributes[0] => array($attributes[1] => $value));
+
+				foreach($test as $role => $permission){
+
+					echo("<pre>");
+					var_dump($role);
+					echo("</pre>");
+					//echo  " role : " . $role . " permission : " . $permission ."<br>";
+				}
+			//echo "premiere lettre : " . $firstKey . " key : " . $key . " value : " . $value ."<br>";
+			}
 		}
 		dd($request->input());
 	}
