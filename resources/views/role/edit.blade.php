@@ -14,7 +14,7 @@
                 </p>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        {!! Form::open(['route'=>'permissions.store', 'class'=>'form-horizontal panel']) !!}
+                        {!! Form::model($roles, ['route'=>['roles.update', $roles->id], 'method'=>'put', 'class'=>'form-horizontal panel']) !!}
                         <div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
                             {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Nom']) !!}
                             {!! $errors->first('name', '<small class="help-block">:message</small>') !!}

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use App\Status;
@@ -23,8 +24,9 @@ class ViewServiceProvider extends ServiceProvider
             $tickets_all = Ticket::getNbTicket();
             $user = $auth->user();
             $ticket_all_your = Ticket::getNbYourTicket($user->id);
-
+            $menu_roles = Role::getAll();
             $view->with([
+                'menu_roles' => $menu_roles,
                 'status' => $status,
                 'tickets_all_your' => $ticket_all_your,
                 'tickets_all' => $tickets_all,

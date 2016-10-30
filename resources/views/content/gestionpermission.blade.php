@@ -58,5 +58,9 @@
 
             <!-- iCheck -->
     <script src="{{ url('/') }}/vendors/iCheck/icheck.min.js"></script>
-
+    <script>
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+        });
+    </script>
 @endsection

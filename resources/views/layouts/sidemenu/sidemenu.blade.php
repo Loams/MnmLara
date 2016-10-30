@@ -92,6 +92,15 @@
 								<a href="{{ url('/permissions') }}">Permissions</a>
 							</li>
 							<li>
+								<a>Roles<span class="fa fa-chevron-down"></a>
+								<ul class="nav child_menu">
+									<li><a href="{{ url('/roles') }}"> Tous les roles</a></li>
+									@foreach($menu_roles as $menu_role)
+										<li><a href="{{route('role.editpermission', [$menu_role->id])}}">{{ $menu_role->display_name }}</a></li>
+									@endforeach
+								</ul>
+							</li>
+							<li>
 								<a href="fixed_footer.html">Sauvegarde</a>
 							</li>
 						</ul>
