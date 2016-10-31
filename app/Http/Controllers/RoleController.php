@@ -98,35 +98,34 @@ class RoleController extends Controller
     public function destroy($id)
     {
         $this->roleRepository->destroy($id);
+        
         return redirect()->back();
     }
-    
+
+	/**
+     * Show edition view for permission attachment
+     *
+     * @param $id
+     * @return Response
+     */
     public function editPermission($id)
     {
         $permissions = Permission::getAll();
         $role = $this->roleRepository->getById($id);
         return view('content.rolepermission', compact('role', 'permissions'));
     }
-    
+
+	/**
+     * Update Permission attachment
+     *
+     * @param Request $request
+     * @param int     $id
+     *
+     * @return Response
+     */
     public function updatePermission(Request $request, $id)
     {
-        $attach = array();
-        $role = $this->roleRepository->getById($id);
-        foreach($request->all() as $perm_id => $value)
-        {
-            $firstKey = substr($perm_id, 0, 1);
-            //echo "premiere lettre : " . $firstKey . " key : " . $key . " value : " . $value ."<br>";
-            if($firstKey != '_'){
-                echo( "id : " . $perm_id . " value : " . $value . "<br>");
-                if($value == 'on')
-                {
-                    $attach[] = $perm_id;
-                }
-            }
-
-
-        }
-        $role->permission()->sync($attach);
+        $this->roleRepository->updatePermission($id, $request->all());
         return redirect()->back();
     }
 
